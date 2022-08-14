@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:some_thing123/constants/global_variables.dart';
-
+import 'package:some_thing123/features/auth/screens/auth_screen.dart';
+import 'package:some_thing123/router.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -23,21 +24,9 @@ class MyApp extends StatelessWidget {
           iconTheme: IconThemeData(color: Colors.black,)
         )
       ),
-      home:  Scaffold(
-        appBar: AppBar(title: const Text('Hello',),
-        ),
-        body: Column(
-          children: [
-         const Center(
-          child: Text (
-            'Flutter Demo Home Page',
-              ),
-                ),
-                ElevatedButton(onPressed: () {}, child:  Text('click'),)
-                ,]
-                  ),
-                    )
-    );
+      onGenerateRoute: (settings) => generateRoute(settings),
+      home:  const AuthScreen(),
+                     );
   }
 }
  
