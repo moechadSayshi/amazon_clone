@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:some_thing123/common/widget/custom_button.dart';
 import 'package:some_thing123/common/widget/custom_textfield.dart';
 import 'package:some_thing123/constants/global_variables.dart';
 
@@ -40,6 +41,7 @@ class _AuthScreenState extends State<AuthScreen> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
           children:  [
             const Text('welcome', style: TextStyle(
               fontSize: 22,
@@ -47,6 +49,9 @@ class _AuthScreenState extends State<AuthScreen> {
             ),
             ),
             ListTile(
+              tileColor: _auth == Auth.signup 
+              ? Globalvariables.backgroundColor 
+              : Globalvariables.greyBackgroundCOlor,
               title: const Text('create account', style: TextStyle(
                 fontWeight: FontWeight.bold,
               ),
@@ -85,14 +90,17 @@ class _AuthScreenState extends State<AuthScreen> {
                       controller: _passwordController,
                       hintText: 'password',
                       ),
+                      const SizedBox( height: 8,),
+                      CustomButton(text: 'sigh-up', onTap: () {})
                   ],
 
                 ),
-
-
               ),
             ),
             ListTile(
+                tileColor: _auth == Auth.signin
+              ? Globalvariables.backgroundColor 
+              : Globalvariables.greyBackgroundCOlor,
               title: const Text('Sign-in ', style: TextStyle(
                 fontWeight: FontWeight.bold,
               ),
@@ -106,6 +114,32 @@ class _AuthScreenState extends State<AuthScreen> {
                     _auth = val!;
                   });
                 }
+              ),
+            ),
+            if(_auth == Auth.signin)
+            Container(
+              padding: const EdgeInsets.all(8),
+              color: Globalvariables.backgroundColor,
+              child: Form(
+                key: _signUpFormKey,
+                child: Column(
+                  children: [
+                      const SizedBox( height: 8,),
+                    
+                    CustomTextfield(
+                      controller: _emailController,
+                      hintText: 'email',
+                      ),
+                      const SizedBox( height: 8,),
+                       CustomTextfield(
+                      controller: _passwordController,
+                      hintText: 'password',
+                      ),
+                      const SizedBox( height: 8,),
+                      CustomButton(text: 'sigh-in', onTap: () {}),
+                  ],
+
+                ),
               ),
             ),
           ],
