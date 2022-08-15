@@ -12,7 +12,6 @@ class AuthScreen extends StatefulWidget {
 class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
-    Navigator.pushNamed(context, "");
     return Scaffold(
       backgroundColor: Globalvariables.greyBackgroundCOlor,
       body: SafeArea(
